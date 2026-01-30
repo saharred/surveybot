@@ -3,7 +3,7 @@ import { analyzeResponses, generateSimpleInterpretation, SimpleAnalysis } from "
 import { invokeLLM } from "./_core/llm";
 import { storagePut } from "./storage";
 import { generatePresentationImages } from "./qatari-image-generator";
-import { generateSimplePresentation } from "./simple-presentation";
+import { generateEnhancedPresentation } from "./enhanced-presentation";
 import { nanoid } from "nanoid";
 
 /**
@@ -124,7 +124,7 @@ export async function analyzeExcelFile(
     
     // Step 6: Generate presentation
     console.log('[Excel Analysis] Creating presentation...');
-    const presentationHTML = await generateSimplePresentation({
+    const presentationHTML = await generateEnhancedPresentation({
       surveyTitle: "تحليل الاستبيان",
       surveyDescription: `تحليل شامل لاستبيان يحتوي على ${parsedData.questions.length} سؤال و ${parsedData.totalResponses} استجابة`,
       schoolInfo: {
